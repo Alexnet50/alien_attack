@@ -17,8 +17,8 @@ export function Engine() {
     const scoreNow = useSelector((state) => state.score.value);
     const coeff = useSelector((state) => state.adaptive.value);
     const dispatch = useDispatch();
-    const aliensMove = () => dispatch(aliensMovement(coeff));   
-    const missilesMove = () => dispatch(missilesMovement(coeff));
+    const aliensMove = () => dispatch(aliensMovement());   
+    const missilesMove = () => dispatch(missilesMovement());
     const aliensDestroy = (array) => dispatch(destroyAliens(array));
     const missilesDestroy = (array) => dispatch(destroyMissiles(array));
     const destroyAliensArray = [];
@@ -26,7 +26,7 @@ export function Engine() {
     let lifes = 5; 
 
     // Window adaptation    
-    window.screen.height > 1200 ? dispatch(setCoeff(2)) : dispatch(setCoeff(1));    
+    window.innerWidth < 900 ? dispatch(setCoeff(2)) : dispatch(setCoeff(1));    
     
     // Aliens appear
     const aliensStart = () => {
@@ -36,7 +36,7 @@ export function Engine() {
         dispatch(scoreClear());
 
         const alienAppear = () => {                           
-            dispatch(newAlien());               
+            dispatch(newAlien(coeff));               
             appearRange > 1000 ? appearRange -= 500 : appearRange = 1000;          
             
             aliensTimer = setTimeout(alienAppear, appearRange);  
@@ -72,10 +72,10 @@ export function Engine() {
             // Impact check
             if (aliens.length > 0) {
                 aliens.forEach((alien) => {
-                if (missile.range > alien.range - 10 * coeff
-                    && missile.range < alien.range + 50 * coeff
-                    && missile.increase < alien.decrease + 50 * coeff
-                    && missile.increase > alien.decrease - 20 * coeff                                              
+                if (missile.range > alien.range - 10
+                    && missile.range < alien.range + 50
+                    && missile.increase < alien.decrease + 50
+                    && missile.increase > alien.decrease - 20                                              
                 ) {
                     destroyAliensArray.push(alien.key);
                     destroyMissilesArray.push(missile.key);
@@ -91,7 +91,7 @@ export function Engine() {
     
     // Lifes
     aliens.length > 0 && aliens.forEach((alien) => {        
-        if (alien.decrease >= 448 * coeff) {   
+        if (alien.decrease >= 448) {   
             lifes--;                              
         }        
     });
@@ -114,7 +114,7 @@ export function Engine() {
     return (
         <div style={{ margin: '0 auto', position: 'relative', width: '900px' }}>                                      
             {pending && 
-                <h1 className='start' style={{ position: 'absolute', top: -500 * coeff, left: 450 - 50 * coeff, fontSize: 48 * coeff, color: 'red', zIndex: 10 }} 
+                <h1 className='start' style={{ position: 'absolute', top: -500, left: 625 - 225 * coeff, fontSize: 48, color: 'red', zIndex: 10 }} 
                 onClick={() => aliensStart()}>Start</h1>              
             }
 

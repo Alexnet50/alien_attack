@@ -10,7 +10,7 @@ export const cannonSlice = createSlice ({
             state.position > 20 && (state.position -= action.payload);           
         },
         moveRight: (state, action) => {
-            state.position < 850 && (state.position += action.payload);            
+            state.position < 850 / action.payload.coeff && (state.position += action.payload.move);            
         },
         // fire: (state, action) => {
         //     state.value.fire = true;            

@@ -11,7 +11,7 @@ function Aliens(props) {
             <>                
                 {aliens.map(alien => {                    
                     return (                   
-                    <div key={alien.key} style={{ width: 50 * coeff, height: 50 * coeff, borderRadius: 10, backgroundImage: `url(../../images/ufo_${alien.outlook}.png)`,
+                    <div key={alien.key} style={{ width: 50, height: 50, borderRadius: 10, backgroundImage: `url(../../images/ufo_${alien.outlook}.png)`,
                         backgroundSize: 'contain', position: 'absolute', top: alien.decrease, left: alien.range
                     }}></div> 
                     )                   

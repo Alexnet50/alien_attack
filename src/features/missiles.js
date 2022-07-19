@@ -11,11 +11,11 @@ export const missilesSlice = createSlice ({
     reducers: {        
         missilesMovement: (state, action) => {            
             for (let i = 0; i < state.length; i++) {
-                state[i].increase >= 3 && (state[i].increase -= missileSpeed * action.payload);                
+                state[i].increase >= 3 && (state[i].increase -= missileSpeed);                
             }           
         },
         newMissile: (state, action) => {            
-            state.push({key: key, range: action.payload.position, increase: 430 * action.payload.coeff});                     
+            state.push({key: key, range: action.payload.position, increase: 430});                     
             key++;                     
         },
         destroyMissiles: (state, action) => {             

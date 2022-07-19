@@ -12,11 +12,11 @@ export const aliensSlice = createSlice ({
     reducers: {
         aliensMovement: (state, action) => {
             for (let i = 0; i < state.length; i++) {
-                state[i].decrease <= 448 * action.payload && (state[i].decrease += alienSpeed * action.payload);
+                state[i].decrease <= 448 && (state[i].decrease += alienSpeed);
             };                        
         },
-        newAlien: (state) => {            
-            state.push({key: key, range: Math.floor(Math.random() * 800), decrease: 0, outlook: Math.floor(Math.random() * 3)});            
+        newAlien: (state, action) => {            
+            state.push({key: key, range: Math.floor(Math.random() * (800 / action.payload)), decrease: 0, outlook: Math.floor(Math.random() * 3)});            
             key++;            
         },
         destroyAliens: (state, action) => {

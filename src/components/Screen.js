@@ -9,7 +9,7 @@ function Screen() {
     const coeff = useSelector((state) => state.adaptive.value);
     
     return (
-        <div style={{ margin: '10px auto', width: 900, height: 500 * coeff, border: '3px solid black',
+        <div style={{ margin: '10px auto', width: 900 / coeff, height: 500, border: '3px solid black',
         borderRadius: 10, backgroundImage: `url(../../images/background.jpg)`, backgroundSize: 'cover', 
         backgroundPosition: 'center center', position: 'relative'
         }}>
