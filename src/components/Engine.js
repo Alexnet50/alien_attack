@@ -26,7 +26,7 @@ export function Engine() {
     let lifes = 5; 
 
     // Window adaptation    
-    window.innerHeight > 1500 ? dispatch(setCoeff(2)) : dispatch(setCoeff(1));    
+    window.innerHeight > 1200 ? dispatch(setCoeff(2)) : dispatch(setCoeff(1));    
     
     // Aliens appear
     const aliensStart = () => {
