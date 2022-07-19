@@ -1,11 +1,11 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { aliensMovement, newAlien, destroyAliens, clearAliens } from '../features/aliens';
 import { missilesMovement, destroyMissiles, clearMissiles } from '../features/missiles';
-import { lifesLeft, scoreIncrease } from '../features/score';
+import { lifesLeft, scoreIncrease, scoreClear } from '../features/score';
 import { setCoeff } from '../features/adaptive';
 import { newBang, clearBang } from '../features/bang';
+import Final from './Final';
 
 let pending = true;
 let movementTimer; 
@@ -14,6 +14,7 @@ let aliensTimer;
 export function Engine() {   
     const aliens = useSelector((state) => state.aliens);
     const missiles = useSelector((state) => state.missiles);
+    const scoreNow = useSelector((state) => state.score.value);
     const coeff = useSelector((state) => state.adaptive.value);
     const dispatch = useDispatch();
     const aliensMove = () => dispatch(aliensMovement(coeff));   
@@ -32,6 +33,7 @@ export function Engine() {
         let appearRange = 8000;              
         dispatch(clearAliens());
         dispatch(clearMissiles());
+        dispatch(scoreClear());
 
         const alienAppear = () => {                           
             dispatch(newAlien());               
@@ -59,7 +61,7 @@ export function Engine() {
         dispatch(newBang({key: key, range: range, decrease: decrease}));         
         setTimeout(() => {
             dispatch(clearBang(key)); 
-        }, 1000)
+        }, 300)
     }
 
     
@@ -92,13 +94,13 @@ export function Engine() {
         if (alien.decrease >= 448 * coeff) {   
             lifes--;                              
         }        
-    });    
-
+    });
     dispatch(lifesLeft(lifes));
 
-    if (lifes === 0) {
+    // Game stop
+    if (lifes === 0 || scoreNow.score === 800) {
         clearTimeout(movementTimer);        
-        clearTimeout(aliensTimer);        
+        clearTimeout(aliensTimer);                
         pending = true;             
     };
 
@@ -110,14 +112,14 @@ export function Engine() {
     destroyMissilesArray.length > 0 && missilesDestroy(destroyMissilesArray);      
 
     return (
-        <div style={{ margin: '0 auto', position: 'relative', width: '900px' }}>            
-            {lifes === 0 && <h2 style={{ position: 'absolute', top: -350, left: 370 }}>Aliens conquered the Earth!</h2>}
-                                        
+        <div style={{ margin: '0 auto', position: 'relative', width: '900px' }}>                                      
             {pending && 
-                <h1 className='start' style={{ position: 'absolute', top: -350 * coeff, left: 450 - 50 * coeff, fontSize: 48 * coeff, color: 'red' }} 
+                <h1 className='start' style={{ position: 'absolute', top: -500 * coeff, left: 450 - 50 * coeff, fontSize: 48 * coeff, color: 'red', zIndex: 10 }} 
                 onClick={() => aliensStart()}>Start</h1>              
-            }       
-                
+            }
+
+            {scoreNow.score === 800 && <Final final='win' />}
+            {lifes === 0 && <Final final='loose' />}                 
         </div>
     )
     

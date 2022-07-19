@@ -17,7 +17,8 @@ function ControlPanel() {
         <div style={{ margin: '10px auto', width: 300 * coeff }}>
             <button onClick={() => dispatch(moveLeft(cannonSpeed))} 
                 style={{ width: 100 * coeff, height: 50 * coeff, fontSize: 24 * coeff, fontWeight: 'bold', fontFamily: 'Exo' }}>Left</button>
-            <button style={{width: 100 * coeff, height: 50 * coeff, fontSize: 24 * coeff, fontWeight: 'bold', fontFamily: 'Exo', background: 'red'}} onClick={() => dispatch(newMissile({position: cannon.position + 10 * coeff, coeff: coeff}))}>FIRE</button>
+            <button style={{width: 100 * coeff, height: 50 * coeff, fontSize: 24 * coeff, fontWeight: 'bold', fontFamily: 'Exo', background: 'red'}} 
+                onClick={() => dispatch(newMissile({position: cannon.position + 10 * coeff, coeff: coeff}))}>FIRE</button>
             <button onClick={() => dispatch(moveRight(cannonSpeed))}
                 style={{ width: 100 * coeff, height: 50 * coeff, fontSize: 24 * coeff, fontWeight: 'bold', fontFamily: 'Exo' }}>Right</button>        
         </div>

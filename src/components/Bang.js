@@ -11,7 +11,7 @@ function Bang() {
             <>                
                 {bangs.map(bang => {                                    
                     return ( 
-                        <Zoom>                  
+                        <Zoom duration={300}>                  
                             <div className='bang' key={bang.key} style={{ width: 50 * coeff, height: 50 * coeff, borderRadius: 25 * coeff,
                                 position: 'absolute', top: bang.decrease, left: bang.range}}>
                             </div> 

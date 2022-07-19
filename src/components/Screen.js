@@ -10,7 +10,7 @@ function Screen() {
     
     return (
         <div style={{ margin: '10px auto', width: 900, height: 500 * coeff, border: '3px solid black',
-        backgroundImage: `url(../../images/background.jpg)`, backgroundSize: 'cover', 
+        borderRadius: 10, backgroundImage: `url(../../images/background.jpg)`, backgroundSize: 'cover', 
         backgroundPosition: 'center center', position: 'relative'
         }}>
             <Aliens />
