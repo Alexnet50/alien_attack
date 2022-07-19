@@ -43,9 +43,8 @@ export function Engine() {
         };
          
         alienAppear();
-        componentsMovement()
+        componentsMovement();
     };   
-    
     
     // Main loop
     const componentsMovement = () => {   
@@ -103,7 +102,6 @@ export function Engine() {
         clearTimeout(aliensTimer);                
         pending = true;             
     };
-
 
     // Clean aliens array
     destroyAliensArray.length > 0 && aliensDestroy(destroyAliensArray);   
