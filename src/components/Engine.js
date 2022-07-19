@@ -112,7 +112,7 @@ export function Engine() {
     return (
         <div style={{ margin: '0 auto', position: 'relative', width: 720 / coeff }}>                                      
             {pending && 
-                <h1 className='start' style={{ position: 'absolute', top: -500, left: 490 - 180 * coeff, fontSize: 48, color: 'red', zIndex: 10 }} 
+                <h1 className='start' style={{ position: 'absolute', top: -500, left: 475 - 180 * coeff, fontSize: 48, color: 'red', zIndex: 10 }} 
                 onClick={() => aliensStart()}>Start</h1>              
             }
 

@@ -16,7 +16,7 @@ export const aliensSlice = createSlice ({
             };                        
         },
         newAlien: (state, action) => {            
-            state.push({key: key, range: Math.floor(Math.random() * (650 / action.payload)), decrease: 0, outlook: Math.floor(Math.random() * 3)});            
+            state.push({key: key, range: Math.floor(Math.random() * (640 / action.payload)), decrease: 0, outlook: Math.floor(Math.random() * 3)});            
             key++;            
         },
         destroyAliens: (state, action) => {
