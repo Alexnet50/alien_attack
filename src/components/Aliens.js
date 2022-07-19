@@ -3,8 +3,7 @@ import { useSelector } from 'react-redux';
 // import { useSelector } from '../';
 
 function Aliens(props) {
-    const aliens = useSelector((state) => state.aliens);
-    const coeff = useSelector((state) => state.adaptive.value);
+    const aliens = useSelector((state) => state.aliens);    
     
     if (aliens && aliens.length > 0) {
         return (

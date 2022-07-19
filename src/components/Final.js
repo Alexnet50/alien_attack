@@ -9,14 +9,14 @@ function Final(props) {
         <>
             {props.final === 'win' && 
                 <Fade top>
-                    <div style={{ width: 800 / coeff, height: 450, borderRadius: 10, backgroundImage: `url(../../images/win.png)`,
-                    backgroundSize: 'cover', backgroundPosition: 'top center', position: 'absolute', top: -490, left: 50 / coeff}}></div>
+                    <div style={{ width: 680 / coeff, height: 450, borderRadius: 10, backgroundImage: `url(../../images/win.png)`,
+                    backgroundSize: 'cover', backgroundPosition: 'top center', position: 'absolute', top: -490, left: 20 / coeff}}></div>
                 </Fade>}
             
             {props.final === 'loose' && 
                 <Fade top>
-                    <div style={{ width: 800 / coeff, height: 450, borderRadius: 10, backgroundImage: `url(../../images/loose.png)`,
-                    backgroundSize: 'cover', backgroundPosition: 'center center', position: 'absolute', top: -490, left: 50 / coeff}}></div>
+                    <div style={{ width: 680 / coeff, height: 450, borderRadius: 10, backgroundImage: `url(../../images/loose.png)`,
+                    backgroundSize: 'cover', backgroundPosition: 'center center', position: 'absolute', top: -490, left: 20 / coeff}}></div>
                 </Fade>}
         </>        
     );

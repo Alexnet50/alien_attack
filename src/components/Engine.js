@@ -26,7 +26,7 @@ export function Engine() {
     let lifes = 5; 
 
     // Window adaptation    
-    window.innerWidth < 900 ? dispatch(setCoeff(2)) : dispatch(setCoeff(1));    
+    window.innerWidth < 800 ? dispatch(setCoeff(2)) : dispatch(setCoeff(1));    
     
     // Aliens appear
     const aliensStart = () => {
@@ -110,9 +110,9 @@ export function Engine() {
     destroyMissilesArray.length > 0 && missilesDestroy(destroyMissilesArray);      
 
     return (
-        <div style={{ margin: '0 auto', position: 'relative', width: '900px' }}>                                      
+        <div style={{ margin: '0 auto', position: 'relative', width: 720 / coeff }}>                                      
             {pending && 
-                <h1 className='start' style={{ position: 'absolute', top: -500, left: 625 - 225 * coeff, fontSize: 48, color: 'red', zIndex: 10 }} 
+                <h1 className='start' style={{ position: 'absolute', top: -500, left: 490 - 180 * coeff, fontSize: 48, color: 'red', zIndex: 10 }} 
                 onClick={() => aliensStart()}>Start</h1>              
             }
 

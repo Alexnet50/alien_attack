@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialStateValue = { position: 493 }
+const initialStateValue = { position: window.screen.width / 8 }
 
 export const cannonSlice = createSlice ({
     name: 'cannon',
@@ -10,7 +10,7 @@ export const cannonSlice = createSlice ({
             state.position > 20 && (state.position -= action.payload);           
         },
         moveRight: (state, action) => {
-            state.position < 850 / action.payload.coeff && (state.position += action.payload.move);            
+            state.position < 650 / action.payload.coeff && (state.position += action.payload.move);            
         },
         // fire: (state, action) => {
         //     state.value.fire = true;            

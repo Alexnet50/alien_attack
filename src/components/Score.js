@@ -6,13 +6,13 @@ function Score() {
     const coeff = useSelector((state) => state.adaptive.value);
 
     return (
-        <>
+        <div style={{ margin: '0 auto', width: 720 / coeff }}>
             <div className='title' style={{ marginTop: 10, textAlign: 'center', fontSize: 36, fontWeight: 'bold' }}>ALIEN ATTACK</div>
-            <div style={{ margin: '0 auto', width: 900 / coeff, display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ margin: '0 auto', width: 720 / coeff, display: 'flex', justifyContent: 'space-between' }}>
                 <div style={{ marginLeft: '20px', fontSize: 24 }}>Lifes left: {scoreNow.lifes} </div>
                 <div style={{ marginRight: '20px', fontSize: 24 }}>Score: {scoreNow.score}</div>    
             </div>
-        </>        
+        </div>        
     );
 }
 
