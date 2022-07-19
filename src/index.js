@@ -3,11 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import aliensReducer from './features/aliens';
+import cannonReducer from './features/cannon';
+import missilesReducer from './features/missiles';
+import scoreReducer from './features/score';
+import adaptiveReducer from './features/adaptive';
+import bangReducer from './features/bang';
+
+const store = configureStore({
+    reducer: {
+        aliens: aliensReducer,
+        cannon: cannonReducer,
+        missiles: missilesReducer,
+        score: scoreReducer,
+        adaptive: adaptiveReducer,
+        bang: bangReducer
+    }
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
   <React.StrictMode>
-    <App />
+    <Provider store={store} >        
+        <App />
+    </Provider>  
   </React.StrictMode>
 );
 
