@@ -2,8 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 function Missiles() {
-    const missiles = useSelector((state) => state.missiles);    
-    const coeff = useSelector((state) => state.adaptive.value);
+    const missiles = useSelector((state) => state.missiles);   
     
     if (missiles && missiles.length > 0) {
         return (
